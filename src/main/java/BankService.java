@@ -23,6 +23,11 @@ public class BankService {
      * @param amount the amount to be deposited.
      */
     public void deposit(double amount){
+        if (amount > 0) {
+            this.balance += amount;
+        } else {
+            System.out.println("Deposit amount must be positive. ");
+        }
 
     }
 
@@ -32,7 +37,15 @@ public class BankService {
      * @param amount the amount to be withdrawn.
      */
     public void withdraw(double amount){
-
+        if (amount > 0) {
+            if (this.balance >= amount){
+                this.balance -= amount;
+            }else {
+                System.out.println("Insufficient funds for withdrawl. ");
+            } 
+        }else {
+                System.out.println("Withdrawal amount must be positive. ");
+            }
     }
 
     /**
@@ -40,6 +53,6 @@ public class BankService {
      * @return the user's balance.
      */
     public double getBalance(){
-        return 0;
+        return this.balance;
     }
 }
